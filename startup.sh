@@ -265,5 +265,5 @@ main()
 
 main
 destroySelf
-reboot
+# reboot
 
