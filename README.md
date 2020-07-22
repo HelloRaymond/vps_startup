@@ -1,12 +1,12 @@
-VPS Startup Script
+VPS 初始化配置脚本
 ===========
 
-A simple bash script for building basic enviorment
+VPS基础环境的配置
 
-Install
+安装
 ------
 
-- Usage
+- 用法
 
 	- Debian / Ubuntu:
 	```bash
@@ -19,22 +19,19 @@ Install
 		cd vps_startup.git && bash ./startup.sh
 	```
 
-Introduction
+简介
 -------------
-- Install Docker-CE and some tools.
-- Deploy Docker containers, detailed configuration command is docker_deploy.sh, just deploy baota_panel defaultly, you can modify it at will.
-- Configure SSH
-	- Change the SSH port to 8022 and configure key login.
-	- If you have an existing publickey file, please put it in vps_startup.git and name it authorized_keys.pub. Otherwise, key pairs will be generated automatically in 42343.
+- 安装 Docker-CE 和一些其他的配置工具
+- 配置 SSH
+	- 更改SSH端口为 8022 并且配置密钥登录
+	- 如果您已经拥有了一个公钥文件, 请把它放在该脚本文件相同的目录下，并重命名为authorized_keys.pub. 否则, 将会自动生成一个密钥对。
 	- Note:
-		- If you provide an existing public key file, the script will configure to disable password login
-		- otherwise you will need to manually execute the following commands to disable password login
+		- 如果您自己提供了一个公钥文件，SSH密码登录将会被禁用
+		- 否则，您需要手动键入以下命令来禁用密码登录
         `sed 's/PasswordAuthentication yes/PasswordAuthentication no/g' /etc/ssh/sshd_config`
-- Configuring firewalls
-	- only accept ports: 80 443 8888 888 8022
-- Install NetworkSpeeder
-	- If kernel version is higher than 4 it will enable bbr, otherwise it will install serverspeeder
-> Note: If your current kernel is not appropriate,this script will change it to a appropriate one, you need reboot and run this script again in order to install serverspeeder correctly.
-
+- 配置防火墙
+	- 只允许以下端口: 80 443 8888 888 8022
+- 配置网络加速
+	- 只有当前内核版本大于4.9时才会自动配置bbr加速
 
 
